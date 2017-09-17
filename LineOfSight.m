@@ -26,7 +26,7 @@ function visible=LineOfSight(pos_1,pos_2)
             f=f+dy;
             if f>=dx
                 if M(x0+idivide(sx-1,2),y0+idivide(sy-1,2))>limit_height
-                    visible=false;
+                    visible=false;                    
                     return;
                 end
                 y0=y0+sy;
@@ -36,7 +36,7 @@ function visible=LineOfSight(pos_1,pos_2)
                 visible=false;
                 return;
             end
-            if dy==0 && M(x0+idivide(sx-1,2),y0)>limit_height
+            if dy==0 && M(x0+idivide(sx-1,2),y0)>limit_height  &&(y0==1 || (y0>1 && M(x0+idivide(sx-1,2),y0-1)>limit_height))
                 visible=false;
                 return;
             end
@@ -57,7 +57,7 @@ function visible=LineOfSight(pos_1,pos_2)
                 visible=false;
                 return;
             end
-            if dx==0 && M(x0,y0+idivide(sy-1,2))>limit_height
+            if dx==0 && M(x0,y0+idivide(sy-1,2))>limit_height && (x0==1 || (x0>1 && M(x0-1,y0+idivide(sy-1,2))>limit_height))
                 visible=false;
                 return;
             end
